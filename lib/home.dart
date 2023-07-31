@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ml_kit/barcode_scanning.dart';
 import 'package:flutter_ml_kit/text_recognition.dart';
 import 'package:flutter_ml_kit/ui_components/function_card.dart';
 import 'package:image_picker/image_picker.dart';
@@ -85,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     if (mlFunctions[index].functionName == "TEXT RECOGNITION") {
                                       Navigator.push(context, MaterialPageRoute(builder: (_) => TextRecognition()));
                                     } else {
-                                      print("text 1");
+                                      Navigator.push(context, MaterialPageRoute(builder: (_) => BarcodeScanning()));
                                     }
                                   },
                                   child: FunctionCard(mlFunctions: mlFunctions[index]));
