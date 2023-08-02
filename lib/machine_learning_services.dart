@@ -31,4 +31,18 @@ class MachineLearningService {
     }
     return result;
   }
+
+  Future<List<String>> processImageForLabeling(File pickedImage) async {
+    List<String> labelText = [];
+    final ImageLabelerOptions options = ImageLabelerOptions(confidenceThreshold: 0.5);
+    final imageLabeler = ImageLabeler(options: options);
+    final inputImage = InputImage.fromFile(pickedImage);
+    final List<ImageLabel> labels = await imageLabeler.processImage(inputImage);
+    for (ImageLabel label in labels) {
+      labelText.add(label.label);
+      final int index = label.index;
+      final double confidence = label.confidence;
+    }
+    return labelText;
+  }
 }
