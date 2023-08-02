@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ml_kit/barcode_scanning.dart';
 import 'package:flutter_ml_kit/image_labeling.dart';
+import 'package:flutter_ml_kit/language_identification.dart';
 import 'package:flutter_ml_kit/text_recognition.dart';
 import 'package:flutter_ml_kit/ui_components/function_card.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
     FunctionModel(functionName: "TEXT RECOGNITION", functionIcon: const Icon(Icons.text_fields_outlined)),
     FunctionModel(functionName: "BARCODE SCANNING", functionIcon: const Icon(Icons.scanner_outlined)),
     FunctionModel(functionName: "IMAGE LABELING", functionIcon: const Icon(Icons.image_search_outlined)),
+    FunctionModel(functionName: "LANGUAGE IDENTIFICATION", functionIcon: const Icon(Icons.language_outlined)),
   ];
 
   ImagePicker picker = ImagePicker();
@@ -89,8 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                       Navigator.push(context, MaterialPageRoute(builder: (_) => const TextRecognition()));
                                     } else if (mlFunctions[index].functionName == "BARCODE SCANNING") {
                                       Navigator.push(context, MaterialPageRoute(builder: (_) => const BarcodeScanning()));
-                                    } else {
+                                    } else if (mlFunctions[index].functionName == "IMAGE LABELING") {
                                       Navigator.push(context, MaterialPageRoute(builder: (_) => const ImageLabeling()));
+                                    } else {
+                                      Navigator.push(context, MaterialPageRoute(builder: (_) => const LanguageIdentification()));
                                     }
                                   },
                                   child: FunctionCard(mlFunctions: mlFunctions[index]));

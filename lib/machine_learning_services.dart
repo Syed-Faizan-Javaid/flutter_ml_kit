@@ -40,9 +40,14 @@ class MachineLearningService {
     final List<ImageLabel> labels = await imageLabeler.processImage(inputImage);
     for (ImageLabel label in labels) {
       labelText.add(label.label);
-      final int index = label.index;
-      final double confidence = label.confidence;
     }
     return labelText;
+  }
+
+  Future<List<IdentifiedLanguage>> identifyLanguage(String text) async {
+    final languageIdentifier = LanguageIdentifier(confidenceThreshold: 0.5);
+    final String response = await languageIdentifier.identifyLanguage(text);
+    final List<IdentifiedLanguage> possibleLanguages = await languageIdentifier.identifyPossibleLanguages(text);
+    return possibleLanguages;
   }
 }
