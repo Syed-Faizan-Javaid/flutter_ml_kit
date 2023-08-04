@@ -69,7 +69,7 @@ class _LanguageIdentificationState extends State<LanguageIdentification> {
                             if (result.isEmpty) {
                               emptyResult = "No Data Found";
                             } else {
-                              possibleLanguages.addAll(result);
+                              possibleLanguages = result;
                             }
                           });
                         },
